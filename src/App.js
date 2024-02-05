@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="card">
+      <Avatar name="Nathan" pic="././profile-pic.jpg" className="img" />
+      <div className="data">
+        <Intro />
+        <SkillList />
+      </div>
+    </div>
+  );
+}
+
+function Avatar(props) {
+  console.log(props);
+  return (
+    <>
+      <img src={props.pic} alt={props.name} />
+    </>
+  );
+}
+
+function Intro(props) {
+  return (
+    <>
+      <h1>Nathan Kandekore</h1>
+      <p>Full Stack Software Engineer</p>
+    </>
+  );
+}
+
+function SkillList(props) {
+  return (
+    <div className="skill-list">
+      <Skill text="HTML" color="orange" />
+      <Skill text="CSS" color="blue" />
+      <Skill text="Javascript" color="yellow" />
+      <Skill text="React" color="lightblue" />
+    </div>
+  );
+}
+
+function Skill(props) {
+  return (
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.text}</span>
     </div>
   );
 }
