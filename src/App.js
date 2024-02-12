@@ -1,6 +1,6 @@
 import "./App.css";
 
-const skills = [
+const tools = [
   {
     skill: "HTML+CSS",
     level: "advanced",
@@ -18,7 +18,7 @@ const skills = [
   },
   {
     skill: "Git and GitHub",
-    level: "intermediate",
+    level: "Intermediate",
     color: "#E84F33",
   },
   {
@@ -28,7 +28,7 @@ const skills = [
   },
   {
     skill: "SQL",
-    level: "beginner",
+    level: "Beginner",
     color: "#FF3B00",
   },
 ];
@@ -36,11 +36,36 @@ const skills = [
 function App() {
   return (
     <div className="card">
-      <Avatar name="Nathan" pic="././profile-pic.jpg" className="img" />
-      <Intro />
       <div className="data">
-        <SkillList />
+        <Avatar name="Nathan" pic="././profile-pic.jpg" className="img" />
+        <Intro />
+        <div className="skill-list">
+          <SkillList />
+        </div>
       </div>
+    </div>
+  );
+}
+
+function SkillList(props) {
+  return (
+    <div className="skill-list">
+      {tools.map((x) => (
+        <Skill skill={x.skill} something={x.level} hue={x.color} />
+      ))}
+    </div>
+  );
+}
+
+function Skill({ skill, something, hue }) {
+  return (
+    <div className="skill" style={{ backgroundColor: hue }}>
+      <span>{skill}</span>
+      <span>
+        {something === "Beginner" && "🍼"}
+        {something === "Intermediate" && "👌"}
+        {something === "advanced" && "🎓"}
+      </span>
     </div>
   );
 }
@@ -60,24 +85,6 @@ function Intro(props) {
       <h1>Nathan Kandekore</h1>
       <p>Full Stack Software Engineer</p>
     </>
-  );
-}
-
-function SkillList(props) {
-  return (
-    <div className="skill-list">
-      {skills.map((skill) => (
-        <Skill />
-      ))}
-    </div>
-  );
-}
-
-function Skill(skills) {
-  return (
-    <div className="skill" style={{ backgroundColor: skills.Skill }}>
-      <span>{skills.Skill}</span>
-    </div>
   );
 }
 
